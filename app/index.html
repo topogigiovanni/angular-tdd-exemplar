@@ -1,86 +1,92 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>
-			Contactical - An Address Book 
-		</title>
-		<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="styles/main.css">
-	</head>
-	<body ng-app='AddressBook'>
-		
-		<div class=app-title>
-			<h1>
-				Contactical
-			</h1>
-			<h2>
-				The Ironclad Address Book 
-			</h2>
-		</div>
-		
-		<div class=app-body>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Contactical - An Address Book</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="stylesheet" href="styles/main.css">
+</head>
+<body ng-app="AddressBook">
 
-			<div ng-controller="ContactList" class='contact-list inline-module'>
-				<h3>Contacts</h3>
-				<div class=contact ng-repeat="contact in contacts">
-					<h4>
-						<span class=contact-name>
-								{{contact.name | proper}}
-						</span>
-						<avatar name=contact.name></avatar>
-					</h4>
-					<p>
-						{{contact.occupation}}
-					</p>
-					<p>
-							<a href="mailto:{{contact.email}}">
-								{{contact.email}}
-							</a>
-					 </p>
-				</div>
-			</div>
+	<div class="app-title">
 
-			<div ng-controller="AddContact" class='add-contact inline-module'>
-				<form ng-submit="addContact()">
-					<h3>Add A New Contact</h3>	
-					<label>
-						Name (Req'd)
-						<input required type="text" ng-model="contact.name">
-					</label>
-					<label>
-						Age
-						<input type="number" ng-model="contact.age">
-					</label>
-					<label for="occupation">
-						Occupation
-						<input type="text" ng-model="contact.occupation">
-					</label>
-					<label for="">
-						Email (Req'd)
-						<input type="email" required ng-model="contact.email">
-					</label>
-					<label for="submit">
-						Add New Contact
-						<input type=submit id=submitNewContact>	
-					</label>
-					<div class=warning ng-if=errorMessage>Please check the information and try again.</div>
-				</form>
+		<h1>Contactical</h1>
+		<h2>The Ironclad Address Book</h2>
+
+	</div>
+
+	<div class="app-body">
+
+		<div ng-controller="ContactList" class="contact-list inline-module">
+
+			<h3>Contacts</h3>
+
+			<div class=contact ng-repeat="contact in contacts">
+
+				<h4>
+					<span class=contact-name>{{ contact.name | proper }}</span>
+					<avatar name=contact.name></avatar>
+				</h4>
+
+				<p>{{contact.occupation}}</p>
+
+				<p><a href="mailto:{{contact.email}}">{{ contact.email }}</a></p>
 
 			</div>
-		
+
 		</div>
 
-		<!-- SCRIPTZ GO HERE -->
-		<script src='bower_components/angular/angular.js'></script>
-		<script src='scripts/global/module.js'></script>
-		<script src='scripts/global/services/validationService.js'></script>
-		<script src='scripts/global/filters/proper.js'></script>
+		<div ng-controller="AddContact" class="add-contact inline-module">
 
-		<script src='scripts/contacts/module.js'></script>
-		<script src='scripts/contacts/controllers/AddContact.js'></script>
-		<script src='scripts/contacts/controllers/ContactList.js'></script>
-		<script src='scripts/contacts/directives/avatar.js'></script>
-		<script src='scripts/contacts/services/contactService.js'></script>
+			<form ng-submit="addContact()">
 
-		<script src='scripts/app.js'></script>
-	</body>
+				<h3>Add A New Contact</h3>
+
+				<label>
+					Name (Required)
+					<input type="text" ng-model="contact.name" required>
+				</label>
+
+				<label>
+					Age
+					<input type="number" ng-model="contact.age">
+				</label>
+
+				<label>
+					Occupation
+					<input type="text" ng-model="contact.occupation">
+				</label>
+
+				<label>
+					Email (Required)
+					<input type="email" ng-model="contact.email" required>
+				</label>
+
+				<label>
+					Add New Contact
+					<input type=submit id=submitNewContact>
+				</label>
+
+				<div class=warning ng-if=errorMessage>Please check the information and try again.</div>
+
+			</form>
+
+		</div>
+
+	</div>
+
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="scripts/global/module.js"></script>
+	<script src="scripts/global/services/validationService.js"></script>
+	<script src="scripts/global/filters/proper.js"></script>
+
+	<script src="scripts/contacts/module.js"></script>
+	<script src="scripts/contacts/controllers/AddContact.js"></script>
+	<script src="scripts/contacts/controllers/ContactList.js"></script>
+	<script src="scripts/contacts/directives/avatar.js"></script>
+	<script src="scripts/contacts/services/contactService.js"></script>
+
+	<script src="scripts/app.js"></script>
+</body>
 </html>
