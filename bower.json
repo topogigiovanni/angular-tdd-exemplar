@@ -13,12 +13,8 @@
     "tests"
   ],
   "dependencies": {
+    "jquery": "~3.1.0",
     "angular": "~1.5.8",
-    "mocha": "~3.0.2",
-    "chai": "~3.5.0",
     "angular-mocks": "~1.5.8"
-  },
-  "devDependencies": {
-    "jquery": "~3.1.0"
   }
 }
