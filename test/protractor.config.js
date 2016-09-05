@@ -5,10 +5,7 @@ exports.config = {
 	*/
 	//  seleniumAddress: 'http://localhost:4444/wd/hub'
 
-	/* need to install this manually on windows with
-	  webdriver-manager update  --out_dir=node_modules/protractor/selenium/
-	*/
-	seleniumServerJar: '.././node_modules/protractor/selenium/selenium-server-standalone-2.45.0.jar', //
+	seleniumServerJar: './../node_modules/selenium-server-standalone-jar/jar/selenium-server-standalone-2.53.1.jar',
 
 	// Capabilities to be passed to the webdriver instance.
 	capabilities: {
