@@ -1,1 +1,5 @@
-angular.module('AddressBook',['AddressBook.Contacts','AddressBook.Global']);
+angular
+	.module('AddressBook', [
+		'AddressBook.Contacts',
+		'AddressBook.Global'
+	]);

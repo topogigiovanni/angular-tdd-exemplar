@@ -1,56 +1,68 @@
-var express = require('express');
-var app = express();
-var fs = require("fs");
-var bodyParser = require('body-parser');
-var cors = require('cors');
+var express = require('express'),
+	app = express(),
+	fs = require('fs'),
+	bodyParser = require('body-parser'),
+	cors = require('cors'),
+	contacts = JSON.parse(fs.readFileSync('db.json', 'utf8')).contacts;
 
-var contacts = JSON.parse(
-	fs.readFileSync('db.json',"utf8")
-).contacts;
+function getContact(name) {
 
-function getContact(name){
-	return contacts.filter(function(c){return c.name===name})[0];
+	return contacts.filter(function(c) {
+		return c.name === name;
+	})[0];
+
 }
 
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/contacts',function(req,res,next){
+app.get('/contacts', function(req, res, next) {
+
 	res.json(contacts);
 	next();
+
 });
 
-app.get('/contacts/:name',function(req,res,next){
+app.get('/contacts/:name', function(req, res, next) {
+
 	var contact = getContact(req.params.name);
-	if (contact){
+
+	if (contact) {
 		res.status(200);
 	} else {
 		res.status(404);
 	}
+
 	res.json(contact);
 	next();
+
 });
 
-app.post('/contacts/new',function(req,res,next){
+app.post('/contacts/new', function(req, res, next) {
+
 	var contact = req.body;
-	
-	if (!contact.name){
-		res.status(400)
-			.send("This is not a valid contact.");
+
+	if (!contact.name) {
+
+		res.status(400).send('This is not a valid contact.');
 		next();
+
 		return;
-	};
-	
-	if (getContact(contact.name)){
-		res.status(409)
-			.send("Contact already exists.");
+
+	}
+
+	if (getContact(contact.name)) {
+
+		res.status(409).send('Contact already exists.');
 		next();
+
 		return;
 	}
-	
+
 	contacts.push(contact);
 	res.status(201).json(contact);
-})
+
+});
 
 var listener = app.listen(3000);
 
