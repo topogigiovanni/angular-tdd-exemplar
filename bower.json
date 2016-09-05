@@ -1,10 +1,10 @@
 {
-  "name": "angular-tdd-demo",
-  "version": "0.0.0",
+  "name": "angular-tdd-exemplar",
+  "version": "1.0.0",
   "authors": [
-    "Daniel Stern <daniel@danielstern.ca>"
+    "Daniel Stern <daniel@danielstern.ca> (http://danielstern.ca)"
   ],
-  "license": "MIT",
+  "license": "ISC",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -13,12 +13,12 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.3.15",
-    "mocha": "~2.2.5",
-    "chai": "~2.3.0",
-    "angular-mocks": "~1.3.15"
+    "angular": "~1.5.8",
+    "mocha": "~3.0.2",
+    "chai": "~3.5.0",
+    "angular-mocks": "~1.5.8"
   },
   "devDependencies": {
-    "jquery": "~2.1.4"
+    "jquery": "~3.1.0"
   }
 }
