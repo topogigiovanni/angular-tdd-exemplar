@@ -1,22 +1,24 @@
-var gulp = require('gulp'),
+/* jshint esversion: 6 */
+
+const
+	gulp = require('gulp'),
 	browserSync = require('browser-sync').create(),
 	reload = browserSync.reload,
-	karma = require('karma').server,
 	liveServer = require('gulp-live-server'),
 	mocha = require('gulp-mocha'),
-	protractor = require("gulp-protractor").protractor;
+	protractor = require('gulp-protractor').protractor,
+	Karma = require('karma').Server;
 
 gulp.task('test-server', function() {
 
 	/* run server tests */
 	return gulp.src('test/server.spec.js', {
-			read: false
+		read: false
+	}).pipe(
+		mocha({
+			reporter: 'spec'
 		})
-		.pipe(
-			mocha({
-				reporter: 'spec'
-			})
-		);
+	);
 
 });
 
@@ -24,16 +26,14 @@ gulp.task('test-server', function() {
 gulp.task('test-browser', function(done) {
 
 	/* run browser tests with karma */
-	return karma.start({
+	new Karma({
 		configFile: __dirname + '/karma.conf.js',
 		singleRun: true,
 		reporters: [
 			'mocha',
 			'coverage'
 		],
-	}, function() {
-		done();
-	});
+	}, done).start();
 
 });
 
@@ -109,15 +109,14 @@ gulp.task('serve-coverage', ['test-browser'], function() {
 
 gulp.task('protractor', ['test-server', 'serve'], function(done) {
 
-	return gulp.src(["./src/tests/*.js"])
-		.pipe(
-			protractor({
-				configFile: "test/protractor.config.js",
-				args: ['--baseUrl', 'http://127.0.0.1:8000']
-			})
-		).on('error', function(e) {
-			throw e;
-		}).on('end', process.exit);
+	return gulp.src(['./src/tests/*.js']).pipe(
+		protractor({
+			configFile: 'test/protractor.config.js',
+			args: ['--baseUrl', 'http://127.0.0.1:8000']
+		})
+	).on('error', function(e) {
+		throw e;
+	}).on('end', process.exit);
 
 });
 
