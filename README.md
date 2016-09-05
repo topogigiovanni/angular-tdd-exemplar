@@ -148,7 +148,7 @@ Assertion framework. Allows assertions to be written in `expect.to.be` form. Add
 - **Use:** Write assertions in a descriptive way
 - **Compare to:** assert
 
-### assert [:link:]<https://github.com/defunctzombie/commonjs-assert>)
+### assert [:link:](https://github.com/defunctzombie/commonjs-assert)
 
 A library built in to Node that can run certain assertions.
 
