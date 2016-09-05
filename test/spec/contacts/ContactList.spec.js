@@ -19,7 +19,7 @@ describe('The Contact List Controller:', function() {
 	it('Should get a copy of the contact list on startup and store it in $scope.', function() {
 
 		/* Create a new instance of the controller with the $controller service */
-		$httpBackend.expectGET('http://localhost:3000/contacts').respond(200, [sample_valid_contact]);
+		$httpBackend.expectGET('http://localhost:3000/contacts').respond(200, [sampleValidContact]);
 
 		contactListController = $controller('ContactList', {
 			$scope: $scope,
