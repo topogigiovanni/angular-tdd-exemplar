@@ -1,5 +1,18 @@
 # Angular TDD Examplar
 
+## TL;DR
+
+```bash
+npm install --global karma karma-cli karma-protractor karma-coverage istanbul webdriver-manager mocha
+
+npm install
+bower install
+
+webdriver-manager update
+
+gulp
+```
+
 ## Introduction
 
 This Angular TDD is an example of Angular App build with running tests in mind.
